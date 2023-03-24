@@ -20,6 +20,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from users.forms import CustomUserCreationForm, CustomUserChangeForm
 
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 
 
@@ -50,6 +51,13 @@ class ProductDetailView(generic.DetailView):
     model = Product
     context_object_name = 'product'
     template_name='store/product_detail.html'
+
+class ProductCreateView(CreateView):
+    model = Product
+    fields = ['name', 'price', 'inv', 'description']
+    template_name = 'store/product_create.html'
+    success_url = reverse_lazy('store:product_list')
+    
 
 class StoreListView(generic.ListView):
     model = Store

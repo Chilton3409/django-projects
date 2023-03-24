@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{% static 'css/grid.css' %}" />
 {% endblock %}
 
-<p>it worked!</p>
+
 
 {% if product_list%}
 {% for product in product_list%}
@@ -29,8 +29,13 @@
 
 
 {%endfor%}
+<footer>
+  <h2><a href="{% url 'store:product_create'%}">Create a product</a></h2>
+
+</footer>
 
 {%else%}
+<h2><a href="{% url 'store:product_create'%}">Create a product</a></h2>
 <p>No products listed</p>
 
 {%endif%}
