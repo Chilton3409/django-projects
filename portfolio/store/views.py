@@ -57,8 +57,18 @@ class ProductCreateView(CreateView):
     fields = ['name', 'price', 'inv', 'description']
     template_name = 'store/product_create.html'
     success_url = reverse_lazy('store:product_list')
-    
 
+class ProductUpdateView(UpdateView):
+    model = Product
+    fields = ['name', 'price', 'inv', 'description']
+    template_name = 'store/product_create.html'
+    success_url = reverse_lazy('store:product_list')
+
+class ProductDeleteView(DeleteView):
+    model = Product 
+    fields = ['name', 'price', 'inv', 'description']
+    success_url = reverse_lazy('store:product_list')
+    
 class StoreListView(generic.ListView):
     model = Store
     context_object_name='store_list'

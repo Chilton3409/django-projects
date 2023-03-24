@@ -1,0 +1,32 @@
+{% extends "store/base_generic.html"%}
+
+{% block content %}
+<section>
+    <article>
+        <h2>Delete blog? {{product.name}}</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+            <table> 
+                <tbody>
+                    <tr>
+                        <td>{{product.price}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{product.inv}}</td>
+                    </tr>
+
+     
+                </tbody>
+            </table>
+           
+    
+            {% csrf_token %}
+        
+            {{form.as_table}}
+           
+            <input type="submit" value="Yes, delete.">
+            
+        </form>
+    </article>
+</section>
+
+{% endblock %}
