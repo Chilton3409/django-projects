@@ -74,8 +74,18 @@ class SignupAsView(CreateView):
     success_url = reverse_lazy('login')
     template_name = "registration/signup.html"
    
-class ChangePasswordView(CreateView):
-    model = User
-    form_class = CustomUserChangeForm
-    success_url = reverse_lazy('login')
-    template_name = 'registration/change_password.html'
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('login')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'registration/change_password.html', {
+        'form': form
+    })
