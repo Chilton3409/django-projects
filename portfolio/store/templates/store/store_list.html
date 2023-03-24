@@ -1,0 +1,36 @@
+{% extends "store/base_generic.html"%}
+{% block content %}
+
+
+{% if store_list %}
+{% for store in store_list%}
+<div class="container text-light">
+    <div class="row justify-content-md-center">
+      <div class="col col-lg-2">
+        <li><a href="{{store.get_absolute_url}}">{{store.headline}}'s detail link</a></li>
+      </div>
+      <div class="col-md-auto">
+        Orders:<li>{{store.Items.all|join:"</li><li>"}}</li>
+        
+      </div>
+     
+      <div class="col-md-auto">
+       total products ordered<li>{{store.count_products}}</li>
+       
+      </div>
+    </div>
+  </div>
+<p>
+   </p>
+    
+
+
+   
+
+{% endfor %}
+{%else%}
+<p>No stores listed</p>
+
+{% endif %}
+
+{% endblock%}

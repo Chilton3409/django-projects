@@ -1,0 +1,55 @@
+{% extends "store/base_generic.html"%}
+{% load static %}
+{% block styles%}
+<link rel="stylesheet" href="{% static 'css/grid.css' %}" />
+
+{% endblock %}
+{% block content %}
+
+
+{% if jobs %}
+<br>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+<div class="container">
+    <h3>Detail view for job: {{jobs.job_name}}. <br> id: {{jobs.id}}</h3>
+    <p>This view allows you to inspect a single job and track your time and spending.</p>
+   
+    <div class="row">
+      <div class="col-12 col-md-8">client: {{jobs.client}}</div>
+      <div class="col-6 col-md-4"></div>
+    </div>
+    <div class="row">
+      <div class="col-6 col-md-4">Date: {{jobs.date}}</div>
+
+
+      
+
+
+      <div class="col-6 col-md-4">Expenses: {{jobs.expenses.all|join:"<br>"}}</div>
+      <div class="col-6 col-md-4">total expenses for job: {{jobs.get_total}}</div>
+    </div>
+    <div class="row">
+      <div class="col-6">personal miles: {{jobs.mileage.personal}}</div>
+      <div class="col-6">business miles: {{jobs.mileage.business}}</div>
+      <div class="col-6">total miles {{jobs.mileage.get_miles}}</div>
+      <div class="col-6">business miles {{jobs.mileage.business_miles}}</div>
+
+
+
+    </div>
+
+    <hr>
+
+    
+
+  </div> <!-- /container -->
+
+</div>
+
+{% else %}
+<p> no jobs</p>
+
+{%endif%}
+
+{% endblock %}

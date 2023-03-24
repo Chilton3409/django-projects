@@ -1,0 +1,37 @@
+{% extends "store/base_generic.html"%}
+{% block content%}
+{% load static %}
+
+{% block styles%}
+<link rel="stylesheet" href="{% static 'css/grid.css' %}" />
+{% endblock %}
+
+<p>it worked!</p>
+
+{% if product_list%}
+{% for product in product_list%}
+<div class="container">
+  <h3>Detail View</h3>
+  <p>This view allows you to view all your products for sale.</p>
+  
+ 
+  <div class="row">
+    <div class="col-12 col-md-8"><a href="{{product.get_absolute_url}}">{{product.name}}</a></div>
+    <div class="col-6 col-md-4"></div>
+  </div>
+  <div class="row">
+    <div class="col-6 col-md-4">price:${{product.price}}</div>
+    <div class="col-6 col-md-4"> inventory:{{product.inv}}</div>
+  
+  </div>
+  <hr>
+</div> <!-- /container -->
+
+
+{%endfor%}
+
+{%else%}
+<p>No products listed</p>
+
+{%endif%}
+{% endblock%}

@@ -1,0 +1,14 @@
+{% extends "store/base_generic.html" %}
+
+{% block content %}
+
+<h2>Register</h2>
+<form class=" container-xxl bg-success" method="post">
+     {% csrf_token %}
+     {{form.as_table}}
+     <input type="submit">
+</form>
+
+<a href="{% url 'login' %}">Back to login</a>
+<a href="{% url 'store:home' %}">Back to Illini Alpacas Home</a>
+{% endblock %}

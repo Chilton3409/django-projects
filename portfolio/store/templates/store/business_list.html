@@ -1,0 +1,25 @@
+{% extends 'store/base_generic.html'%}
+
+{% block content %}
+
+{% if business_list %}
+{% for business in business_list%}
+<div class="container text-light">
+    <div class="row justify-content-md-center">
+      <div class="col col-lg-2">
+        <p>email: {{business.email}}</p>
+<p>phone: {{business.phone}}</p>
+
+<p>message: {{business.message}}</p>
+
+     
+    </div>
+  </div>
+
+
+
+{% endfor%}
+{%else%}
+<p>No business messages
+{%endif%}
+{% endblock %}
