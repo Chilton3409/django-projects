@@ -11,6 +11,9 @@ urlpatterns = [
 
     path('store/', views.StoreListView.as_view(), name='store_list'),
     path('storeDetail/<int:pk>/', views.StoreDetailView.as_view(), name='store_detail'),
+    path('storeCreate/', views.StoreCreateView.as_view(), name='store_create'),
+    path('storeUpdate/<int:pk>/update', views.StoreUpdateView.as_view(), name='store_update'),
+    path('storeDelete/<int:pk>/delete', views.StoreDeleteView.as_view(), name='store_delete'),
     path('Contact/', views.BusinessListView.as_view(), name='business_list'),
     path('signup/', views.SignupAsView.as_view(), name='signup'),
     path('change_password/', views.change_password, name='change_password'),

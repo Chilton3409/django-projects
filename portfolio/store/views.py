@@ -79,6 +79,24 @@ class StoreDetailView(generic.DetailView):
     context_object_name='store'
     template_name='store/store_detail.html'
 
+class StoreCreateView(CreateView):
+    model = Store 
+    fields = ['headline', 'Items']
+    template_name = 'store/store_create.html'
+    success_url = reverse_lazy('store:store_list')
+
+
+class StoreUpdateView(UpdateView):
+    model = Store 
+    fields = ['headline', 'Items']
+    template_name = 'store/store_create.html'
+    success_url = reverse_lazy('store:store_list')
+    
+class StoreDeleteView(DeleteView):
+    model = Store
+    fields = ['headline', 'Items']
+    success_url = reverse_lazy('store:store_list')
+
 class BusinessListView(generic.ListView):
     model = Business
     context_object_name = 'business_list'

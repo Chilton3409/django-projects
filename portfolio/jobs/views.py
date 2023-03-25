@@ -32,6 +32,20 @@ class JobsCreateView(CreateView):
     success_url = reverse_lazy('jobs:jobs_list')
     template_name = 'jobs/jobs_create.html'
 
+class JobsUpdateView(UpdateView):
+    model = Jobs
+    fields = ['client', 'date', 'expenses', 'mileage']
+    template_name = 'jobs/jobs_create.html'
+    success_url = reverse_lazy('jobs:jobs_list')
+
+class JobsDeleteView(DeleteView):
+    model = Jobs 
+    fields = ['client', 'date', 'expenses', 'mileage']
+    success_url = reverse_lazy('jobs:jobs_list')
+
+
 class ExpenseCreateView(CreateView):
     model = Expenses
-    pass
+    fields = ['expenses', 'amount', 'date']
+    template_name = 'jobs/expense_create.html'
+    success_url = reverse_lazy('jobs:jobs_list')

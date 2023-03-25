@@ -8,6 +8,8 @@
     <div class="row justify-content-md-center">
       <div class="col col-lg-2">
         <li><a href="{{store.get_absolute_url}}">{{store.headline}}'s detail link</a></li>
+        <li><a href="{% url 'store:store_update' store.id %}">Update</a></li>
+        <li><a href="{% url 'store:store_delete' store.id %}">Delete</a></li>
       </div>
       <div class="col-md-auto">
         Orders:<li>{{store.Items.all|join:"</li><li>"}}</li>
@@ -28,9 +30,12 @@
    
 
 {% endfor %}
+
 {%else%}
 <p>No stores listed</p>
 
 {% endif %}
+<h2>       <a href="{% url 'store:store_create' %}">Create a store?</a>
+</h2>
 
 {% endblock%}
