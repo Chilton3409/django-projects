@@ -1,11 +1,13 @@
 {% extends "store/base_generic.html" %}
 {% block content %}
+<br>
+<br>
 <section>
     <article>
         <h2>Create a product</h2>
-        <form class="bg-dark text-light" action="" method="post" enctype="multipart/form-data">
+        <form class="form" action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <table class="bg-dark text-light">
+            <table class="bg-dark text-light text-center">
                 {{form.as_table}}
             </table>
             <input class="btn-primary" type="submit" value="Submit">

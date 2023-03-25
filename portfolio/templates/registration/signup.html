@@ -1,14 +1,45 @@
-{% extends "store/base_generic.html" %}
-
+{% extends "store/base_generic.html"%}
 {% block content %}
+<br>
+<br>
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
 
-<h2>Register</h2>
-<form class=" container-xxl bg-success" method="post">
-     {% csrf_token %}
-     {{form.as_table}}
-     <input type="submit">
-</form>
+{% if next %}
+{% if user.is_authenticated %}
+  <p>Your account doesn't have access to this page. To proceed,
+  please login with an account that has access.</p>
+{% else %}
+  <p>Please login to see this page.</p>
+{% endif %}
+{% endif %}
+<div class="container">
+<body class="text-center" >
+  <form class="form-signin" method="post" action="{% url 'login' %}">
+    {% csrf_token %}
 
-<a href="{% url 'login' %}">Back to login</a>
-<a href="{% url 'store:home' %}">Back to Illini Alpacas Home</a>
+    
+ {{form.as_table}}
+  </form>
+</body>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+
 {% endblock %}
