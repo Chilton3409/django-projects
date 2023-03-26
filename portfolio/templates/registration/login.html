@@ -1,12 +1,12 @@
 {% extends "store/base_generic.html"%}
 {% load static %}
 {% block styles %}
-<link rel='stylesheet' href="{% static 'css/signin.css' %}" 
+<link rel='stylesheet' href="{% static 'css/signin.css' %}">
 {% endblock %}
 {% block content %}
 
 {% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
+<p >Your username and password didn't match. Please try again.</p>
 {% endif %}
 
 {% if next %}
@@ -25,25 +25,40 @@
     
     <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-    <div class="checkbox mb-3">
+
+  {{form.username.label_tag}}
+    {{ form.username }}
+
+{{form.password.label_tag}}
+    {{ form.password }}
       <label>
         <input type="checkbox" value="remember-me"> Remember me
       </label>
     </div>
     <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
     <input class="btn btn-lg btn-primary btn-block" type="submit" value="login">
-<input type="hidden" name="next" value="{{ next }}">
+    <input type="hidden" name="next" value="{{ next }}">
   </form>
+ 
+  <script>
+    const username = document.getElementById('id_username');
+    const password = document.getElementById('id_password');
+  
+    username.classList.add("form-control");
+    password.classList.add("form-control");
+  </script>
+
 </body>
+<!--
+    
+<img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+<input type="email" name="username" id="inputEmail" class="form-control" placeholder="Email address" autocomplete="username" required id="id_username" value="{}" required autofocus>
+
+<input type="password" id="password" class="form-control" placeholder="Password" autocomplete="current-password" required id="id_password" required>
 
 
-
-
-
+-->
 
 
 

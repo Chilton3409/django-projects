@@ -102,19 +102,26 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-       
+       <div class="container">
+        <img class="featurette-image img-fluid mx-auto" src="{% static 'images/nate-duece.jpg' %}">
+       </div>
             <div class="carousel-caption d-none d-md-block">
-                <h5>My Django Python Portfolio</h5>
+              
+                <h1 class="text-primary">My Django Python Portfolio</h1>
                 <p>Welcome to my portfolio</p>
             </div>
+            
         </div>
         <div class="carousel-item">
-            
+            <br>
             <div class="container">
               <div class="carousel-caption text-left">
                 <h1>Products app</h1>
                 <p>A web app that allows users to create products and manage their inventory</p>
                 <p><a class="btn btn-lg btn-primary" href="{% url 'store:product_list'%}" role="button">View Template List</a></p>
+              </div>
+              <div class="container">
+                <img class="featurette-image img-fluid mx-auto" src={% static 'images/background.JPG'%}>
               </div>
             </div>
         </div>
@@ -124,6 +131,9 @@
                 <h1>Job Expenses App.</h1>
                 <p>A web app that allows users to track their spendind.</p>
                 <p><a class="btn btn-lg btn-primary" href="{% url 'jobs:jobs_list'%}" role="button">View Template List</a></p>
+              </div>
+              <div class="container">
+                <img class="featurette-image img-fluid mx-auto" src={% static 'images/admin.png'%}>
               </div>
             </div>
         </div>
@@ -151,20 +161,20 @@
               <div class="col-lg-4">
                 <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
                 <h2>My Django Python Portfolio</h2>
-                <p>A single web project containing many apps. </p>
+                <p>A product app, A job expenses app, and a basic store app. Where you create, read, update, and delete objects using Pythons web framework Django. </p>
                 <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
               </div><!-- /.col-lg-4 -->
               <div class="col-lg-4">
                 <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
                 <h2>Job expenses website</h2>
                 <p>Website that allows user to create, update, delete, and analyze business expenses. Ideally made for people who file a schedule c on their taxes. Or independent contractors who work more than one job at a time.</p>
-                <p><a class="btn btn-secondary" href="{% url 'jobs:jobs_list'%}"role="button">View details &raquo;</a></p>
+                <p><a class="btn btn-secondary" href="{% url 'jobs:jobs_list'%}"role="button">Get started with the job expenses app. &raquo;</a></p>
               </div><!-- /.col-lg-4 -->
               <div class="col-lg-4">
                 <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-                <h2>Farm app</h2>
-                <p>Allow farmers to track yields year to year.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                <h2>A Product App</h2>
+                <p>Alows user to create and keep track of products.</p>
+                <p><a class="btn btn-secondary" href="{% url 'store:product_list'%}" role="button">Get started with the Product app &raquo;</a></p>
               </div><!-- /.col-lg-4 -->
             </div><!-- /.row -->
     
@@ -175,11 +185,15 @@
     
             <div class="row featurette">
               <div class="col-md-7">
-                <h2 class="featurette-heading">Alpaca medical database <span class="text-muted">Upload relevant medical info</span></h2>
-                <p class="lead">The idea being to collect relevant medical data about camelids</p>
+                <h2 class="featurette-heading">A product app. <span class="text-muted">Create basic products</span></h2>
+                <p class="lead">I could have protected the view with a login, but I choose not too.
+                  I could also allow users to upload images uses an S3 bucket or Cloudinary.
+                  
+                </p>
               </div>
               <div class="col-md-5">
-                <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+                <img class="featurette-image img-fluid mx-auto" src="{% static 'images/railroad.jpg'%}">
+
               </div>
             </div>
     
@@ -187,11 +201,11 @@
     
             <div class="row featurette">
               <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading">Basic Store App <span class="text-muted">Create, Read, Update, and Delete</span></h2>
-                <p class="lead">Create products and keep track of your inventory.</p>
+                <h2 class="featurette-heading">Basic Store App <span class="text-muted">Collect the products you create into a single store</span></h2>
+                <p class="lead">Keep track of all the products you have created using the store app.</p>
               </div>
               <div class="col-md-5 order-md-1">
-                <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+                <img class="featurette-image img-fluid mx-auto" src="{% static 'images/petunia.jpg'%}">
               </div>
             </div>
     
@@ -200,10 +214,11 @@
             <div class="row featurette">
               <div class="col-md-7">
                 <h2 class="featurette-heading">Contact information <span class="text-muted">Leave me a message</span></h2>
-                <p class="lead">You can leave me a message if you would like to hire me. </p>
+                <p class="lead">You can leave me a message by filling out the form below.</p>
+                <!--enter business create form link here,-->
               </div>
               <div class="col-md-5">
-                <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+                <img class="featurette-image img-fluid mx-auto" src="{% static 'images/confetti-orig.jpg'%}">
               </div>
             </div>
     
@@ -228,7 +243,7 @@
     {%endblock%}
     <footer class="container">
       <p class="float-right"><a href="#">Back to top</a></p>
-      <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      <p>&copy; 2022-2023 Gallbegalled, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
     </footer>
  </main>
  <script src="{% static 'js/carousel.js'%}"></script>

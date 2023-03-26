@@ -7,8 +7,6 @@ from django.db.models import Sum
 # Create your models here.
 class Expenses(models.Model):
     
-
-
     EXPENSE_TYPE = (
         ('a', 'Advertising'),
         ('f', 'Fees'),
@@ -26,9 +24,6 @@ class Expenses(models.Model):
         pass
     def __str__(self):
         return f'{self.amount}'
-
-   
-
     def get_absolute_url(self):
         pass
     
@@ -52,8 +47,6 @@ class Mileage(models.Model):
     def __str__(self):
         return f'{self.business}'
 
-    
-
 class Jobs(models.Model):
     id = models.UUIDField(primary_key=True, default= uuid.uuid4, null=False, blank=False)
     job_name = models.CharField(max_length=200, null=False, blank=True, help_text="Enter name for job you are tracking")
@@ -72,11 +65,7 @@ class Jobs(models.Model):
         total = (self.expenses.aggregate(Sum('amount')))
         return total.pop('amount__sum')
     
-   
 
-    
-        
-        
     def __str__(self):
         return f'{self.client}'
     

@@ -2,16 +2,18 @@
 {% block content %}
 <br>
 <br>
-<section>
-    <article>
-        <h2>Create a product</h2>
-        <form class="form" action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <table class="bg-dark text-light text-center">
-                {{form.as_table}}
-            </table>
-            <input class="btn-primary" type="submit" value="Submit">
-        </article>
-    </section>
+
+<br>
+<div class="container">
+    <h2 class='text-success'>Create a Product</h2>
+<form action="" class="form-group bg-dark text-light" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table text-light table-striped table-sm">
+        {{form.as_table}}
+    </table>
+   
+    <input type="submit" class="btn btn-primary" value="Submit">
+    
+</form>
 
 {% endblock %}

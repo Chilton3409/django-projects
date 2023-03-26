@@ -29,19 +29,12 @@
       <div class="col-6 col-md-4">Expenses: {{jobs.expenses.all|join:"<br>"}}</div>
       <div class="col-6 col-md-4">total expenses for job: {{jobs.get_total}}</div>
     </div>
-    <div class="row">
-      <div class="col-6">personal miles: {{jobs.mileage.personal}}</div>
-      <div class="col-6">business miles: {{jobs.mileage.business}}</div>
-      <div class="col-6">total miles {{jobs.mileage.get_miles}}</div>
-      <div class="col-6">business miles {{jobs.mileage.business_miles}}</div>
-
-
-
-    </div>
+  
 
     <hr>
 
     
+    <div class="col-12 col-md-8"><a href="{% url 'jobs:jobs_list'%}">Go back?</a></div>
 
   </div> <!-- /container -->
 
