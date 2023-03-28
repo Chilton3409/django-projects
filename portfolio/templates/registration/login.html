@@ -14,7 +14,7 @@
   <p>Your account doesn't have access to this page. To proceed,
   please login with an account that has access.</p>
 {% else %}
-  <p>Please login to see this page.</p>
+  <p>Welcome, please login</p>
 {% endif %}
 {% endif %}
 
@@ -23,7 +23,7 @@
     {% csrf_token %}
 
     
-    <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <img class="mb-4" src="{% static 'images/hand.jpg' %}" alt="" width="400" height="auto">
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
   {{form.username.label_tag}}

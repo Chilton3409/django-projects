@@ -1,7 +1,5 @@
 {% extends "store/base_generic.html"%}
-
-
-
+{% block content%}
 {% load static %}
 
 {% block styles%}
@@ -10,14 +8,15 @@
 
 
 
-{% block content %}
-
+{% if product_list%}
+{% for product in product_list%}
 <div class="container text-center">
-  <h3>Delete product: {{product.name}}</h3>
+  <h3>Detail View</h3>
+  <p>This view allows you to view all your products for sale.</p>
   
  
   <div class="row">
-    <div class="col-12 col-md-8">{{product.name}}</div>
+    <div class="col-12 col-md-8"><a href="{{product.get_absolute_url}}">{{product.name}}</a></div>
     <div class="col-6 col-md-4"><a href="{% url 'store:product_update' product.id %}">Update product info</a></div>
     <div class="col-6 col-md-4"><a href="{% url 'store:product_delete' product.id %}">Delete this product?</a></div>
   </div>
@@ -27,40 +26,19 @@
   
   </div>
   <hr>
-
-
-  <form action="" method="post" enctype="multipart/form-data">
-     
-      {% csrf_token %}
-  
-      {{form.as_table}}
-     
-      <input class="btn btn-danger" type="submit" value="Yes, delete.">
-      
-  </form>
-
 </div> <!-- /container -->
 
 
+{%endfor%}
 
 
-
-
+{%else%}
 <h2><a href="{% url 'store:product_create'%}">Create a product</a></h2>
 <p>No products listed</p>
 
-
+{%endif%}
 <footer>
   <h2><a href="{% url 'store:product_create'%}">Create a product</a></h2>
 
 </footer>
 {% endblock%}
-
-
-
-
-
-
-
-
-

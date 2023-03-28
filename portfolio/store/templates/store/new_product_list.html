@@ -17,8 +17,7 @@
         {% for product in product_list%}
       <tr>
         <th scope="row">{{product.id}}</th>
-        <td>    <div class="col-12 col-md-8"><a href="{{product.get_absolute_url}}">{{product.name}}</a></div>
-        </td>
+        <td>{{product.name}}</td>
    
         <td>{{product.price}}</td>
         <td>{{product.description}}</td>
@@ -27,23 +26,12 @@
       {% endfor %}
   
     </tbody>
-    <tfoot>
-      <div class="container text-center">
-        <div class="col-6 col-md-4"><button class="btn"><a  href="{% url 'store:product_create'%}">Create a product</a></button></div>
-        
-      </div>
-
-
-    </tfoot>
   </table>
 
 
 
 {%else%}
-<div class="container">
-  <div class="col-6 col-md-4"><button class="btn"><a  href="{% url 'store:product_create'%}">Create a product</a></button></div>
-</div>
-
+<p>No product details
 
 {%endif%}
 

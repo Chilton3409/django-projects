@@ -11,8 +11,8 @@
 {% if jobs%}
 {% for job in jobs%}
 <div class="container text-center">
-  <h3>Detail View</h3>
-  <p>This view allows you to view all your products for sale.</p>
+  <h3>Details for {{job.job_name}}</h3>
+  <p>Look at the details for {{job.client}}</p>
   
  
   <div class="row">
@@ -22,7 +22,11 @@
   </div>
   <div class="row">
     <div class="col-6 col-md-4">date: {{job.date}}</div>
-    <div class="col-6 col-md-4"> expenses: {{job.expenses.all|join:"<td></td>"}}</div>
+    <div class="col-6 col-md-4">
+      
+
+    </div>
+      
         <div class="col-6 col-md-4"> total: {{job.get_total}}</div>
 
   
@@ -35,12 +39,13 @@
 
 
 {%else%}
-<h2><a href="{% url 'jobs:jobs_create'%}">Create a Job</a></h2>
-<p>No products listed</p>
+<div class="container">
+  <div class="col-6 col-md-4"><button class="btn"><a  href="{% url 'jobs:jobs_create'%}">Create a new job</a></button></div>
+</div>
 
 {%endif%}
 <footer>
-  <h2><a href="{% url 'jobs:jobs_create'%}">Create a product</a></h2>
+  <p>footer information will come later</p>
 
 </footer>
 {% endblock%}

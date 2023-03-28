@@ -3,6 +3,8 @@ from .models import Jobs, Expenses
 from django.views import generic
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.messages.views import SuccessMessageMixin
+
 
 
 
@@ -29,8 +31,13 @@ class JobsDetailView(generic.DetailView):
 class JobsCreateView(CreateView):
     model = Jobs 
     fields = ['client', 'date', 'expenses', 'mileage']
+    
+    
     success_url = reverse_lazy('jobs:jobs_list')
+   
     template_name = 'jobs/jobs_create.html'
+
+    
 
 class JobsUpdateView(UpdateView):
     model = Jobs

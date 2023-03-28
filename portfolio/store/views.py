@@ -102,6 +102,12 @@ class BusinessListView(generic.ListView):
     context_object_name = 'business_list'
     template_name='store/business_list.html'
 
+class BusinessCreateView(CreateView):
+    model = Business
+    fields = ['email', 'phone', 'message']
+    template_name = 'store/business_create.html'
+    success_url = reverse_lazy('store:home')
+
 
 class SignupAsView(CreateView):
    

@@ -31,7 +31,7 @@
     
         <header>
           <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="#">Portfolio</a>
+            <a class="navbar-brand" href="{% url 'store:home'%}">Portfolio</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -74,9 +74,7 @@
 
 
 
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
+          
               </ul>
               <form class="form-inline mt-2 mt-md-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -86,6 +84,22 @@
           </nav>
         </header>
         <main role="main">
+<aside class="text-center">
+          
+            <br>
+            {% if user.is_authenticated%}
+            <h1>
+            welcome {{user}}
+          </h1>
+          {% else %}
+          <h1>hello, you are not logged in</h2>
+
+            {%endif%}
+
+
+         
+        </aside>
+
      {% block content%}
         
          
@@ -129,7 +143,7 @@
             <div class="container">
               <div class="carousel-caption text-left">
                 <h1>Job Expenses App.</h1>
-                <p>A web app that allows users to track their spendind.</p>
+                <p>A web app that allows users to track their spending.</p>
                 <p><a class="btn btn-lg btn-primary" href="{% url 'jobs:jobs_list'%}" role="button">View Template List</a></p>
               </div>
               <div class="container">
@@ -162,7 +176,7 @@
                 <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
                 <h2>My Django Python Portfolio</h2>
                 <p>A product app, A job expenses app, and a basic store app. Where you create, read, update, and delete objects using Pythons web framework Django. </p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                <p><a class="btn btn-secondary" href="{% url 'store:business_create'%}" role="button">Leave me a message  &raquo;</a></p>
               </div><!-- /.col-lg-4 -->
               <div class="col-lg-4">
                 <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
@@ -214,7 +228,9 @@
             <div class="row featurette">
               <div class="col-md-7">
                 <h2 class="featurette-heading">Contact information <span class="text-muted">Leave me a message</span></h2>
-                <p class="lead">You can leave me a message by filling out the form below.</p>
+                <p class="lead">You can leave me a message by clicking on the link below.</p>
+                <p><a class="btn btn-secondary" href="{% url 'store:business_create'%}" role="button">Leave me a message  &raquo;</a></p>
+
                 <!--enter business create form link here,-->
               </div>
               <div class="col-md-5">

@@ -46,10 +46,11 @@ class Store(models.Model):
     
     
 class Business(models.Model):
-    email = models.EmailField(primary_key=True, help_text="Enter business email")
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, null=False, blank=False)
+
+    email = models.EmailField(primary_key=False, help_text="Enter business email")
     phone = models.IntegerField(max_length=12, null=False, blank=False, help_text="Enter business phone number")
     message = models.TextField(null=True, blank=True, help_text='leave a brief message for clients')
-    storefront= models.ForeignKey(Store, null=True, blank=True, on_delete=models.DO_NOTHING, help_text="Storefront for business" )
     class Meta:
         ordering = ['email']
 
