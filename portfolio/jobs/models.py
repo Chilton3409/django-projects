@@ -3,6 +3,7 @@ import uuid
 from django.contrib import admin
 from django.urls import reverse
 from django.db.models import Sum
+from django.utils import timezone
 
 # Create your models here.
 class Expenses(models.Model):
@@ -47,11 +48,26 @@ class Mileage(models.Model):
     def __str__(self):
         return f'{self.business}'
 
+#going to write an income model to depict income coming in
+#then write many to many in the jobs model to track income coming in and compare it against expenses
+class Income(models.Model):
+        id = models.UUIDField(primary_key=True, default= uuid.uuid4, null=False, blank=False)
+        date = models.DateTimeField(auto_now_add=True)
+        amount = models.IntegerField(null=False, blank=True, default=0, help_text="Enter amount earned")
+
+        class Meta:
+            ordering = ['amount']
+
+        def __str__(self):
+            return f'{self.amount}'
+        
+
 class Jobs(models.Model):
     id = models.UUIDField(primary_key=True, default= uuid.uuid4, null=False, blank=False)
     job_name = models.CharField(max_length=200, null=False, blank=True, help_text="Enter name for job you are tracking")
     client = models.CharField(max_length=100, null=False, blank=True, help_text="Enter clients name")
-    date = models.DateTimeField(auto_now_add=False)
+    date = models.DateTimeField(auto_now_add=True)
+    income = models.ManyToManyField(Income)
     expenses = models.ManyToManyField(Expenses)
     mileage = models.ForeignKey(Mileage,primary_key=False ,on_delete=models.DO_NOTHING, default=0, blank=True, null=True)
     
@@ -65,6 +81,16 @@ class Jobs(models.Model):
         total = (self.expenses.aggregate(Sum('amount')))
         return total.pop('amount__sum')
     
+    def get_wages(self):
+        income = (self.income.aggregate(Sum('amount')))
+        return income.pop('amount__sum')
+
+    def get_profit(self):
+        total = (self.expenses.aggregate(Sum('amount')))
+        income = (self.income.aggregate(Sum('amount')))
+      
+       
+        return int(income.pop('amount__sum') - int(total.pop('amount__sum')))
 
     def __str__(self):
         return f'{self.client}'

@@ -22,12 +22,15 @@
   </div>
   <div class="row">
     <div class="col-6 col-md-4">date: {{job.date}}</div>
-    <div class="col-6 col-md-4">
+    <div class="col-6 col-md-4">income: {{job.income.all|join:"<br>"}}
       
 
     </div>
       
-        <div class="col-6 col-md-4"> total: {{job.get_total}}</div>
+        <div class="col-6 col-md-4"> expenses: {{job.get_total}}</div>
+        <div class="col-6 col-md-4"> wages: {{job.get_wages}}</div>
+        <div class="col-6 col-md-4"> profit: {{job.get_profit}}</div>
+
 
   
   </div>

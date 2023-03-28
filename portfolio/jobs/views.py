@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Jobs, Expenses
+from .models import Jobs, Expenses, Income
 from django.views import generic
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -30,7 +30,7 @@ class JobsDetailView(generic.DetailView):
 
 class JobsCreateView(CreateView):
     model = Jobs 
-    fields = ['client', 'date', 'expenses', 'mileage']
+    fields = ['client','income','expenses', 'mileage']
     
     
     success_url = reverse_lazy('jobs:jobs_list')
@@ -41,18 +41,27 @@ class JobsCreateView(CreateView):
 
 class JobsUpdateView(UpdateView):
     model = Jobs
-    fields = ['client', 'date', 'expenses', 'mileage']
+    fields = ['client','income','expenses', 'mileage']
     template_name = 'jobs/jobs_create.html'
     success_url = reverse_lazy('jobs:jobs_list')
 
 class JobsDeleteView(DeleteView):
     model = Jobs 
-    fields = ['client', 'date', 'expenses', 'mileage']
+    fields = ['client','income','expenses', 'mileage']
     success_url = reverse_lazy('jobs:jobs_list')
 
 
 class ExpenseCreateView(CreateView):
     model = Expenses
-    fields = ['expenses', 'amount', 'date']
+    fields = ['expenses', 'amount']
     template_name = 'jobs/expense_create.html'
     success_url = reverse_lazy('jobs:jobs_list')
+
+#begin income views
+
+class IncomeCreateView(CreateView):
+    model = Income 
+    fields = ['amount']
+    template_name = 'jobs/income_create.html'
+    success_url = reverse_lazy('jobs:jobs_list')
+

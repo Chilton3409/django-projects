@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Expenses, Jobs, Mileage
+from .models import Expenses, Jobs, Mileage, Income
 
 # Register your models here.
 class ExpenseAdmin(admin.ModelAdmin):
@@ -16,4 +16,9 @@ class MileageAdmin(admin.ModelAdmin):
     list_display = ['personal']
 
 admin.site.register(Mileage, MileageAdmin)
+
+class IncomeAdmin(admin.ModelAdmin):
+    list_display = ['amount']
+
+admin.site.register(Income, IncomeAdmin)
 

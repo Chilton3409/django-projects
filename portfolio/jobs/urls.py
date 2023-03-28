@@ -10,6 +10,7 @@ urlpatterns = [
     path('JobsUpdate/<uuid:pk>/update/', views.JobsUpdateView.as_view(), name='jobs_update'),
     path('jobsDelete/<uuid:pk>/delete/', views.JobsDeleteView.as_view(), name='jobs_delete'),
     path('expenseCreate/', views.ExpenseCreateView.as_view(), name='expense_create'),
+    path('incomeCreate/', views.IncomeCreateView.as_view(), name="income_create"),
 
     
 ]
