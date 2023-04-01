@@ -27,7 +27,7 @@
     <html lang="en">
      
   
-      <body class="bg-dark text-light">
+      <body class="bg-dark text-light text-center">
     
         <header>
           <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -262,9 +262,11 @@
       <p>&copy; 2022-2023 Gallbegalled, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
     </footer>
  </main>
+ {% block bootstrap_load%}
  <script src="{% static 'js/carousel.js'%}"></script>
  <script src="{% static 'js/holder.min.js'%}"></script>
  <script src="{% static 'js/popper.min.js'%}"></script>
+ {%endblock%}
 
 </body>
 </html>

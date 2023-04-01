@@ -30,7 +30,7 @@ class JobsDetailView(generic.DetailView):
 
 class JobsCreateView(CreateView):
     model = Jobs 
-    fields = ['client','income','expenses', 'mileage']
+    fields = ['client','job_name','income','expenses', 'mileage']
     
     
     success_url = reverse_lazy('jobs:jobs_list')
@@ -41,21 +41,45 @@ class JobsCreateView(CreateView):
 
 class JobsUpdateView(UpdateView):
     model = Jobs
-    fields = ['client','income','expenses', 'mileage']
+    fields = ['client','job_name','income','expenses', 'mileage']
     template_name = 'jobs/jobs_create.html'
     success_url = reverse_lazy('jobs:jobs_list')
 
 class JobsDeleteView(DeleteView):
     model = Jobs 
-    fields = ['client','income','expenses', 'mileage']
+    fields = ['client','job_name','income','expenses', 'mileage']
     success_url = reverse_lazy('jobs:jobs_list')
+
+class ExpenseListView(generic.ListView):
+    model = Expenses
+    context_object_name = 'expenses'
+    template_name = 'jobs/expenses_list.html'
+
+class ExpenseDetailView(generic.DetailView):
+    model = Expenses
+    context_object_name = 'expenses'
+    template_name = 'jobs/expenses_detail.html'
 
 
 class ExpenseCreateView(CreateView):
     model = Expenses
     fields = ['expenses', 'amount']
     template_name = 'jobs/expense_create.html'
-    success_url = reverse_lazy('jobs:jobs_list')
+    success_url = reverse_lazy('jobs:expenses_list')
+
+class ExpenseUpdateView(UpdateView):
+    model = Expenses
+    fields = ['expenses', 'amount']
+    template_name = 'jobs/expense_create.html'
+    success_url = reverse_lazy('jobs:expenses_list')
+
+class ExpenseDeleteView(DeleteView):
+    model = Expenses
+    fields = ['expenses', 'amount']
+    success_url = reverse_lazy('jobs:expenses_list')
+
+    
+
 
 #begin income views
 

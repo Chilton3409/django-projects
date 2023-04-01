@@ -3,6 +3,8 @@
 {% block content%}
 
 
+
+
 <br>
 <div class="container">
 <form action="" class="form-group" method="post" enctype="multipart/form-data">
@@ -14,13 +16,20 @@
     <input type="submit" class="btn btn-primary" value="Submit">
     
 </form>
-<h2><a href="{% url 'jobs:expense_create'%}">Create a new expense?</a></h2>
-<h2><a href="{% url 'jobs:income_create'%}">Create a new expense?</a></h2>
+
+<h2><a href="{% url 'jobs:expenses_create'%}">Create a new expense?</a></h2>
+<h2><a href="{% url 'jobs:income_create'%}">Income creation form</a></h2>
 
 </div>
-<script>
-date = document.querySelector('#id_date')
-date.setAttribute("type", "date");
-</script>
+
+<footer>
+    <div class="container text-center">
+        <div class="col-6 col-md-4"><button class="btn"><a  href="{% url 'jobs:expenses_create'%}">Create a new expense</a></button></div>
+        <div class="col-6 col-md-4"><button class="btn"><a  href="{% url 'jobs:income_create'%}">Income link</a></button></div>
+        
+    </div>
+
+</footer>
+
 
 {% endblock %}

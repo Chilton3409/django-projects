@@ -7,7 +7,8 @@ from django.utils import timezone
 
 # Create your models here.
 class Expenses(models.Model):
-    
+    id = models.UUIDField(primary_key=True, default= uuid.uuid4, null=False, blank=False)
+
     EXPENSE_TYPE = (
         ('a', 'Advertising'),
         ('f', 'Fees'),
@@ -17,7 +18,7 @@ class Expenses(models.Model):
 
     )
     expenses = models.CharField(max_length=1, choices=EXPENSE_TYPE, blank=True, null=False, help_text="Choose business expense type")
-    amount = models.IntegerField()
+    amount = models.IntegerField(default=0)
     date = models.DateTimeField(auto_now_add=False, null=True, blank=True)
 
 
@@ -26,7 +27,7 @@ class Expenses(models.Model):
     def __str__(self):
         return f'{self.amount}'
     def get_absolute_url(self):
-        pass
+        return reverse("jobs:expenses_detail", args=[str(self.id)])
     
 class Mileage(models.Model):
     #need business miles and personal miles
@@ -68,7 +69,7 @@ class Jobs(models.Model):
     client = models.CharField(max_length=100, null=False, blank=True, help_text="Enter clients name")
     date = models.DateTimeField(auto_now_add=True)
     income = models.ManyToManyField(Income)
-    expenses = models.ManyToManyField(Expenses)
+    expenses = models.ManyToManyField(Expenses, default=0)
     mileage = models.ForeignKey(Mileage,primary_key=False ,on_delete=models.DO_NOTHING, default=0, blank=True, null=True)
     
     #ModelName.objects.filter(field_name__isnull=True).aggregate(Sum('field_name'))
@@ -86,11 +87,25 @@ class Jobs(models.Model):
         return income.pop('amount__sum')
 
     def get_profit(self):
-        total = (self.expenses.aggregate(Sum('amount')))
-        income = (self.income.aggregate(Sum('amount')))
-      
+        if self.expenses is not TypeError:
+            income = (self.income.aggregate(Sum('amount'))).pop('amount__sum')
+            total = (self.expenses.aggregate(Sum('amount'))).pop('amount__sum')
+            if total is None:
+                total = 0
+            return int(income - total)
+        else:
+            return('cant')
+
        
-        return int(income.pop('amount__sum') - int(total.pop('amount__sum')))
+
+
+         
+   
+
+        
+
+       
+        
 
     def __str__(self):
         return f'{self.client}'

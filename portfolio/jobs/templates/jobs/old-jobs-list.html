@@ -1,0 +1,54 @@
+{% extends "store/base_generic.html"%}
+{% block content%}
+{% load static %}
+
+{% block styles%}
+<link rel="stylesheet" href="{% static 'css/grid.css' %}" />
+{% endblock %}
+
+
+<div class="container text-center">
+{% if jobs%}
+{% for job in jobs%}
+<div class="container text-center">
+  <h3>Details for {{job.job_name}}</h3>
+  <p>Look at the details for {{job.client}}</p>
+  
+ 
+  <div class="row">
+    <div class="col-12 col-md-8"><a href="{{job.get_absolute_url}}">{{job.client}}</a></div>
+    <div class="col-6 col-md-4"><a href="{% url 'jobs:jobs_update' job.id %}">Update job info</a></div>
+    <div class="col-6 col-md-4"><a href="{% url 'jobs:jobs_delete' job.id %}">Delete this job?</a></div>
+  </div>
+  <div class="row">
+    <div class="col-6 col-md-4">date: {{job.date}}</div>
+    <div class="col-6 col-md-4">income: {{job.income.all|join:"<br>"}}</div>
+      
+
+    </div>
+      
+        <div class="col-6 col-md-4"> expenses: {{job.get_total}}</div>
+        <div class="col-6 col-md-4"> wages: {{job.get_wages}}</div>
+        <div class="col-6 col-md-4"> profit: {{job.get_profit}}</div>
+
+
+  
+  </div>
+  <hr>
+</div> <!-- /container -->
+
+
+{%endfor%}
+</div>
+
+{%else%}
+<div class="container">
+  <div class="col-6 col-md-4"><button class="btn"><a  href="{% url 'jobs:jobs_create'%}">Create a new job</a></button></div>
+</div>
+
+{%endif%}
+<footer>
+  <p>footer information will come later</p>
+
+</footer>
+{% endblock%}

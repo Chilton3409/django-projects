@@ -1,54 +1,99 @@
 {% extends "store/base_generic.html"%}
-{% block content%}
 {% load static %}
-
+{% block content%}
 {% block styles%}
 <link rel="stylesheet" href="{% static 'css/grid.css' %}" />
 {% endblock %}
 
-
-
 {% if jobs%}
+<div class="d-flex flex-row bd-highlight mb-3">
+  <div class="p-2 bd-highlight"><button class="btn"><a  href="{% url 'jobs:jobs_create'%}">Create a Job</a></button></div>
+  <div class="p-2 bd-highlight"><button class="btn"><a  href="{% url 'jobs:expenses_list'%}">expenses list</a></button></div>
+  <div class="p-2 bd-highlight"><button class="btn"><a  href="{% url 'jobs:expenses_create'%}">create an expense</a></button></div>
+  <div class="p-2 bd-highlight"><button class="btn"><a  href="{% url 'jobs:income_create'%}">create income</a></button></div>
+
+</div>
+<div class="d-flex flex-row-reverse bd-highlight">
+  <div class="p-2 bd-highlight">Flex item 1</div>
+  <div class="p-2 bd-highlight">Flex item 2</div>
+  <div class="p-2 bd-highlight">Flex item 3</div>
+</div>
+
+
+
+  
+
+
+
+
+
+
+<table class="table">
+    <thead class="text-center">
+      <tr>
+        
+        <th scope="col">Details</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+       
+        <th scope="col">Income</th>
+        <th scope="col">Expenses</th>
+        <th scope="col">Wages</th>
+        <th scope="col">Profit</th>
+      </tr>
+    </thead>
+    <tbody class="container text-center">
 {% for job in jobs%}
-<div class="container text-center">
-  <h3>Details for {{job.job_name}}</h3>
-  <p>Look at the details for {{job.client}}</p>
+
+     
+    
+        
+   
+        <td>
+                <div class="col-12 col-md-8"><a href="{{job.get_absolute_url}}">{{job.client}}</a></div>
+           </td>
+           <td>
+             <div class="col-6 col-md-4"><a href="{% url 'jobs:jobs_update' job.id %}">Update job info</a></div>
+           </td>
+           <td>
+                <div class="col-6 col-md-4"><a href="{% url 'jobs:jobs_delete' job.id %}">Delete this job?</a></div>
+
+           </td>
+       
+        <td>    <div class="col-6 col-md-4 bg-success">income: {{job.income.all|join:"<br>"}}</div>
+
+        </td>
+        <td>        <div class="col-6 col-md-4 bg-danger"> expenses: {{job.get_total}}</div>
+        </td>
+        <td>
+            <div class="col-6 col-md-4 bg-primary"> wages: {{job.get_wages}}</div>
+
+        </td>
+        <td>
+                    <div class="col-6 col-md-4 bg-info"> {% if not job.expenses %}profit: cant without expenses {% else %}{{job.get_profit}}  {%endif%}</div>
+
+        </td>
+      </tr>
+      {% endfor %}
   
- 
-  <div class="row">
-    <div class="col-12 col-md-8"><a href="{{job.get_absolute_url}}">{{job.client}}</a></div>
-    <div class="col-6 col-md-4"><a href="{% url 'jobs:jobs_update' job.id %}">Update job info</a></div>
-    <div class="col-6 col-md-4"><a href="{% url 'jobs:jobs_delete' job.id %}">Delete this job?</a></div>
-  </div>
-  <div class="row">
-    <div class="col-6 col-md-4">date: {{job.date}}</div>
-    <div class="col-6 col-md-4">income: {{job.income.all|join:"<br>"}}
-      
+    </tbody>
+    <tfoot>
 
-    </div>
-      
-        <div class="col-6 col-md-4"> expenses: {{job.get_total}}</div>
-        <div class="col-6 col-md-4"> wages: {{job.get_wages}}</div>
-        <div class="col-6 col-md-4"> profit: {{job.get_profit}}</div>
+    
 
 
-  
-  </div>
-  <hr>
-</div> <!-- /container -->
+    </tfoot>
+  </table>
 
-
-{%endfor%}
 
 
 {%else%}
 <div class="container">
-  <div class="col-6 col-md-4"><button class="btn"><a  href="{% url 'jobs:jobs_create'%}">Create a new job</a></button></div>
+  <div class="col-6 col-md-4"><button class="btn"><a  href="{% url 'jobs:jobs_create'%}">Create a Job</a></button></div>
 </div>
 
-{%endif%}
-<footer>
-  <p>footer information will come later</p>
 
-</footer>
+{%endif%}
+
+         
 {% endblock%}

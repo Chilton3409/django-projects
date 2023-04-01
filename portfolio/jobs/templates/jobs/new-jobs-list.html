@@ -1,0 +1,76 @@
+{% extends "store/base_generic.html"%}
+{% block content%}
+
+
+{% if jobs%}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">id</th>
+        <th scope="col">Price</th>
+        <th scope="col">description</th>
+        <th scope="col">Inventory</th>
+      </tr>
+    </thead>
+    <tbody>
+{% for job in jobs%}
+
+     
+      <tr>
+        <th scope="row">{{job.job_name}}</th>
+        <td>    <div class="col-12 col-md-8"><a href="{{product.get_absolute_url}}">{{product.name}}</a></div>
+        </td>
+   
+        <td>
+                <div class="col-12 col-md-8"><a href="{{job.get_absolute_url}}">{{job.client}}</a></div>
+           </td>
+           <td>
+             <div class="col-6 col-md-4"><a href="{% url 'jobs:jobs_update' job.id %}">Update job info</a></div>
+           </td>
+           <td>
+                <div class="col-6 col-md-4"><a href="{% url 'jobs:jobs_delete' job.id %}">Delete this job?</a></div>
+
+           </td>
+        <td>
+            <div class="col-6 col-md-4">date: {{job.date}}</div>
+
+        </td>
+        <td>    <div class="col-6 col-md-4">income: {{job.income.all|join:"<br>"}}</div>
+
+        </td>
+        <td>        <div class="col-6 col-md-4"> expenses: {{job.get_total}}</div>
+        </td>
+        <td>
+            <div class="col-6 col-md-4"> wages: {{job.get_wages}}</div>
+
+        </td>
+        <td>
+            <div class="col-6 col-md-4"> profit: {{job.get_profit}}</div>
+
+        </td>
+      </tr>
+      {% endfor %}
+  
+    </tbody>
+    <tfoot>
+      <div class="container text-center">
+        <div class="col-6 col-md-4"><button class="btn"><a  href="{% url 'jobs:jobs_create'%}">Create a Job</a></button></div>
+        
+      </div>
+
+
+    </tfoot>
+  </table>
+
+
+
+{%else%}
+<div class="container">
+  <div class="col-6 col-md-4"><button class="btn"><a  href="{% url 'jobs:jobs_create'%}">Create a Job</a></button></div>
+</div>
+
+
+{%endif%}
+
+{% endblock%}

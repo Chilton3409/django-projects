@@ -1,0 +1,47 @@
+{% extends "store/base_generic.html"%}
+{% block content%}
+{% load static %}
+
+{% block styles%}
+<link rel="stylesheet" href="{% static 'css/grid.css' %}" />
+{% endblock %}
+
+
+
+{% if expenses%}
+
+<div class="container text-center">
+  <h3>Detail View</h3>
+  <p>This view allows you to view all your products for sale.</p>
+  
+ 
+  <div class="row">
+    <div class="col-12 col-md-8">{{expenses.name}}</div>
+    <div class="col-6 col-md-4"><a href="{% url 'jobs:expenses_update' expenses.id %}">Update expense info</a></div>
+    <div class="col-6 col-md-4"><a href="{% url 'jobs:expenses_delete' expenses.id %}">Delete this expense?</a></div>
+  </div>
+  <div class="row">
+    <div class="col-6 col-md-4"> type: {{expenses.get_expenses_display}}</div>
+    <div class="col-6 col-md-4">amount: ${{expenses.amount}}</div>
+    
+  
+  </div>
+  <hr>
+</div> <!-- /container -->
+
+
+
+
+
+{%else%}
+<h2><a href="{% url 'jobs:expenses_create'%}">Create an Expense</a></h2>
+<p>No products listed</p>
+
+{%endif%}
+<footer>
+    <h2><a href="{% url 'jobs:expenses_create'%}">Create an Expense</a></h2>
+    <h2><a href="{% url 'jobs:expenses_list'%}">Go back?</a></h2>
+
+
+</footer>
+{% endblock%}

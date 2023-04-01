@@ -21,13 +21,31 @@
   <p>Please login to see this page.</p>
 {% endif %}
 {% endif %}
-<body class="text-center" >
+<body class="text-center">
+  <br>
+  <div class="container">
+    <img class="login-img" class="mb-4" src="{% static 'images/hand.jpg' %}" alt="" width="400" height="auto">
+
+  </div>
   <form class="form-signin" method="post" action="{% url 'login' %}">
     {% csrf_token %}
 
     
  {{form.as_table}}
+ <input class="btn btn-lg btn-primary btn-block" type="submit" value="login">
+ <input type="hidden" name="next" value="{{ next }}">
   </form>
+ 
+  <script>
+    const username = document.getElementById('id_email');
+    const pass1 = document.getElementById('id_password1');
+    const pass2 = document.getElementById('id_password2');
+
+    username.classList.add("form-control");
+    pass1.classList.add("form-control");
+    pass2.classList.add("form-control");
+
+  </script>
 </body>
 
 

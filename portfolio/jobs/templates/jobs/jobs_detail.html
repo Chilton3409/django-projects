@@ -17,6 +17,8 @@
    
     <div class="row">
       <div class="col-12 col-md-8">client: {{jobs.client}}</div>
+      <div class="col-12 col-md-8">job_name: {{jobs.job_name}}</div>
+
       <div class="col-6 col-md-4"></div>
     </div>
     <div class="row">
@@ -28,6 +30,10 @@
 
       <div class="col-6 col-md-4">Expenses: {{jobs.expenses.all|join:"<br>"}}</div>
       <div class="col-6 col-md-4">total expenses for job: {{jobs.get_total}}</div>
+      <div class="col-6 col-md-4">wages: {{jobs.get_wages}}</div>
+      <div class="col-6 col-md-4">Profit: {{jobs.get_profit}}</div>
+
+
     </div>
   
 
@@ -38,15 +44,7 @@
     <div class="col-12 col-md-8"><button class"btn btn-sucess"><a href="{% url 'jobs:jobs_update' jobs.id%}">Update {{jobs.job_name}}</a></button></div>
 
 
-    <form action="{% url 'jobs:jobs_delete' jobs.id %}" method="post" enctype="multipart/form-data">
-
-      {% csrf_token %}
-      
-      {{form.as_table}}
-     
-      <input class="btn-danger" type="submit" value="Yes, delete.">
-      
-
+   
   </div> <!-- /container -->
 
 </div>
