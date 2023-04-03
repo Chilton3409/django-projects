@@ -23,6 +23,10 @@ class JobsListView(generic.ListView):
     context_object_name = 'jobs'
     template_name = 'jobs/jobs_list.html'
 
+
+    
+    
+
 class JobsDetailView(generic.DetailView):
     model = Jobs
     context_object_name = 'jobs'
@@ -78,7 +82,7 @@ class ExpenseDeleteView(DeleteView):
     fields = ['expenses', 'amount']
     success_url = reverse_lazy('jobs:expenses_list')
 
-    
+
 
 
 #begin income views

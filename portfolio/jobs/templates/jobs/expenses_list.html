@@ -1,7 +1,6 @@
 {% extends "store/base_generic.html"%}
 {% block content%}
 
-
 {% if expenses%}
 <div class="d-flex flex-row bd-highlight mb-3">
   <div class="p-2 bd-highlight"><button class="btn"><a  href="{% url 'jobs:jobs_create'%}">Create a Job</a></button></div>
@@ -20,15 +19,15 @@
   <div class="p-2 bd-highlight">Flex item 3</div>
 </div>
 
-<table class="table">
+<table class="table table-sortable">
     <thead>
       <tr>
-        <th scope="col">id</th>
-        <th scope="col">type</th>
-        <th scope="col">amount</th>
-        <th scope="col">date</th>
-        <th scope="col">update</th>
-        <th scope="col">delete</th>
+        <th>id</th>
+        <th>type</th>
+        <th>amount</th>
+        <th>date</th>
+        <th>update</th>
+        <th>delete</th>
 
 
 
@@ -38,16 +37,16 @@
     <tbody>
         {% for x in expenses%}
       <tr>
-        <th scope="row">{{x.id}}</th>
-        <td>    <div class="col-12 col-md-8"><a href="{{x.get_absolute_url}}">{{x.get_expenses_display}}</a></div>
+        <td>{{x.id}}</td>
+        <td>   <a href="{{x.get_absolute_url}}">{{x.get_expenses_display}}</a>
         </td>
    
         <td>{{x.amount}}</td>
         <td>{{x.date}}</td>
-        <td>             <div class="col-6 col-md-4"><a href="{% url 'jobs:expenses_update' x.id %}">Update expense info</a></div>
+        <td>             <a href="{% url 'jobs:expenses_update' x.id %}">Update</a>
           
         </td>
-        <td>             <div class="col-6 col-md-4"><a href="{% url 'jobs:expenses_delete' x.id %}">Delete expense </a></div>
+        <td>             <a href="{% url 'jobs:expenses_delete' x.id %}">Delete</a>
           
         </td>
 
@@ -62,6 +61,7 @@
 
     </tfoot>
   </table>
+
 
 
 
