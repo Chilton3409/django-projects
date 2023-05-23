@@ -26,6 +26,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: /Dockerfile
+          file: portfolio/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/7ee053bff78ed87e9bc4cdcd2c17536b234cb3560811ba9deefea7561423058e
