@@ -6,7 +6,7 @@ WORKDIR /portfolio
 
 COPY portfolio/requirements.txt /requirements.txt
 
-RUN pip3 install -r requirements.txt
+RUN pip3 install -r portfolio/requirements.txt
 
 COPY . .
 EXPOSE 8000
