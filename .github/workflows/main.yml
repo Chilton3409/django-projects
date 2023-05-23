@@ -28,4 +28,4 @@ jobs:
           context: .
           file: portfolio/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/modest_mcnulty
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/9fc8000db61996de87f77ae275322265d16cd4a2f6a5b8430cdf69c9e4f0f6ec
