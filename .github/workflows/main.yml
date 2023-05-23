@@ -28,5 +28,5 @@ jobs:
           context: .
           file: portfolio/Dockerfile
           push: true
-          container: gall
+        
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/newtest:latest
