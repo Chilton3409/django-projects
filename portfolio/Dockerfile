@@ -4,9 +4,9 @@ FROM python:3
 
 WORKDIR /portfolio
 RUN git clone https://github.com/Chilton3409/django-projects.git
-COPY requirements.txt requirements.txt
+COPY portfolio/requirements.txt portfolio/requirements.txt
 
-RUN portfolio/pip3 install -r portfolio/requirements.txt
+RUN pip3 install -r portfolio/requirements.txt
 
 
 COPY . .
