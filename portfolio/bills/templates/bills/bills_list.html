@@ -1,0 +1,75 @@
+{% extends "store/base_generic.html"%}
+
+{% block content%}
+
+{% if bills %}
+
+
+<div class="d-flex flex-row bd-highlight mb-3">
+    <div class="p-2 bd-highlight"><th></th></div>
+    <div class="p-2 bd-highlight"></div>
+  
+  </div>
+  <div class="d-flex flex-row-reverse bd-highlight">
+
+    <div class="p-2 bd-highlight"><a href="{% url 'bills:bills_create' %}">Create new bill</a></div>
+    <div class="p-2 bd-highlight text-center">total: ${{total}}</div>
+  </div>
+   
+
+  <div class="table-responsive-xl">
+
+  <table class="table text-center fs-1">
+      <thead class="text-center">
+        <tr class="text-center fs-1">
+          
+          <th class="text-center">Name</th>
+          <th class="text-center">Amount due</th>
+          <th class="text-center">Due Date</th>
+          <th class="text-center">Delete</th>
+          <th class="text-center">Update</th>
+
+
+          
+
+        </tr>
+      </thead>
+      <tbody class="container-fluid text-center fs-1">
+
+{% for b in bills %}
+
+<td class="text-center">
+    <div class="col-12 col-md-8"><a href="{{b.get_absolute_url}}">{{b.name}}</a></div>
+</td>
+<td>
+    <div class="col-12 col-md-8">{{b.amount}}</div>
+</td>
+<td>
+    <div class="col-12 col-md-8">{{b.due_date}}</div>
+</td>
+<td>
+  <div class="col-12 col-md-8"><a href="{% url 'bills:bills_delete' b.id%}">Delete Bill?</a></div>
+</td>
+<td>
+  <div class="col-12 col-md-8"><a href="{% url 'bills:bills_update' b.id%}">Update Bill?</a></div>
+</td>
+
+</tr>
+
+
+{%endfor%}
+</tbody>
+
+
+
+</table>
+</div>
+{% else %}
+<p>no budgets created</p>
+<div class="p-2 bd-highlight"><th><a href="{% url 'bills:bills_create' %}">Create new bill</a></th></div>
+
+{% endif %}
+
+
+{% endblock %}
+ 

@@ -1,0 +1,92 @@
+{% extends "store/base_generic.html"%}
+{% load static %}
+{% block styles%}
+<link rel="stylesheet" href="{% static 'css/grid.css' %}" />
+
+{% endblock %}
+
+{% block content %}
+
+{% if bills %}
+<br>
+<div class="container text-center fs-3">
+<h3>Detail View</h3>
+
+<div class="row text-center">
+  <div class="col-12 col-md-8 text-info">{{bills.name}}</div>
+  <div class="col-6 col-md-4"><a href="{% url 'bills:bills_update' bills.id %}">Update bill info</a></div>
+  <div class="col-6 col-md-4"><a href="{% url 'bills:bills_delete' bills.id %}">Delete this bill?</a></div>
+</div>
+<div class="row">
+  <div class="col-6 col-md-4 text-danger">amount due: ${{bills.amount}}</div>
+  <div class="col-6 col-md-4 text-danger">Due Date: {{bills.due_date}}</div>
+  <div class="col-12 col-md-8"><a href="{% url 'bills:bills_list'%}">Go back?</a></div>
+  <div class="col-12 col-md-4 text-success">Description: {{bills.description}}</div>
+
+
+
+</div>
+
+
+
+
+</div>
+</div>
+
+<!--
+<div class="container-fluid grid-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom grid">
+<div class="container-fluid grid text-center fs-1">
+    <h3>{{bills.name}}</h3>
+    <p class="text-center">This is your {{bills.name}} bill. The amount due on {{bills.due_date}} is ${{bills.amount}}</p>
+   
+    <div class="grid">
+      <div class="col-12 col-md-8">Name: {{bills.name}}</div>
+
+      <div class="col-12 col-md-8">Amount: ${{bills.amount}}</div>
+      <div class="col-12 col-md-8">Due Date: {{bills.due_date}}</div>
+
+      <div class="col-12 col-md-4">Description: {{bills.description}}</div>
+      <div class="col-12 col-md-8"><a href="{% url 'bills:bills_list'%}">Go back?</a></div>
+      <div class="grid col-12 col-md-8"><button class"btn btn-sucess"><a href="{% url 'bills:bills_update' bills.id%}">Update {{jobs.job_name}}</a></button></div>
+      <div class=" grid col-12 col-md-8"><button class"btn btn-sucess"><a href="{% url 'bills:bills_delete' bills.id%}">Delete {{jobs.job_name}}</a></button></div>
+    </div>
+  </div>
+  </div>
+
+
+      
+
+
+      
+
+
+    </div>
+  
+
+    <hr>
+
+    
+   
+
+
+   
+  </div> 
+</div>--><!-- /container -->
+
+
+
+
+{% else %}
+<p> no budgets</p>
+
+{%endif%}
+
+<footer>
+  <h2><a href="{% url 'bills:bills_create'%}">Create a bill to track</a></h2>
+
+</footer>
+
+
+
+{% endblock %}
+

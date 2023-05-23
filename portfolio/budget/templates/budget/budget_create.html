@@ -1,0 +1,33 @@
+{% extends "store/base_generic.html"%}
+
+{% block content %}
+
+<br>
+<div class="container-fluid text-center">
+<form action="" class="form-responsive" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table text-light table-striped table-lg">
+        {{form.as_table}}
+    </table>
+   
+    <input type="submit" class="btn btn-primary" value="Submit">
+    
+</form>
+
+
+
+</div>
+
+<footer>
+    <div class="container text-center">
+        <div class="col-6 col-md-4"></div>
+        <div class="col-6 col-md-4"></div>
+        
+    </div>
+
+</footer>
+
+
+
+
+{% endblock %}

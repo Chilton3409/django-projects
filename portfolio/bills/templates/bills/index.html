@@ -1,0 +1,38 @@
+{% extends "store/base_generic.html" %}
+
+{% block content %}
+
+
+<article class='bg-dark container-fluid text-center'>
+    <aside class='container-bg-dark'>
+        
+    
+        <ul class='text-light text-center'>
+           
+            <li>bills tracked:{{num_bills}}</li>
+            <li>total tracked: ${{total}}</li>
+    
+            <li><a href="{% url 'bills:bills_list' %}">Bills list</a></li>
+    
+    
+        </ul>
+    </aside>
+<section>
+    <p class="text-light">This website allows you to track all of your bills in one place.
+        This is just a part of my portfolio and not a real project. However feel free to use in to track your bills on a basic level.
+            Click the link below to start tracking your bills. <a href="{% url 'bills:bills_list' %}">Bills list</a> Right now, I decided not to include a user based functionality, meaning all bills created by anyone
+            are viewable on the bills listing page. If this were a production project, each user could track their own bills.
+            This is easy to implement but requires people to create a login and potential employers don't usually do that.
+    
+    </p>
+    <ul class="text-light">
+        <li>Personal</li>
+        <li>Utilities</li>
+        <li>Insurance</li>
+        <li>Groceries</li>
+        <li>Other</li>
+   
+</section>
+</article>
+
+{% endblock %}

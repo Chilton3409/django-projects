@@ -1,0 +1,82 @@
+{% extends "store/base_generic.html"%}
+
+{% block content %}
+{% load static %}
+
+{% block styles%}
+<link rel="stylesheet" href="{% static 'css/grid.css' %}" />
+{% endblock %}
+
+{% if budget %}
+
+<div class="container text-center">
+  <h3>Detail View for {{budget.name}}</h3>
+  <h4>ID:{{budget.id}}</h4>
+  <p>This view allows you to view all the details of {{budget.name}}.</p>
+  
+ 
+  <div class="row">
+    <div class="col-12 col-md-8">{{budget.name}}</div>
+    <div class="col-6 col-md-4"><a href="{% url 'budget:budget_update' budget.id %}">update</a>: {{budget.name}}</div>
+    <div class="col-6 col-md-4"><a href="{% url 'budget:budget_delete' budget.id %}">Delete this budget</a></div>
+    <div class="col-6 col-md-4">income: ${{budget.income}}</div>
+    <div class="col-6 col-md-4">expenses: ${{budget.expenses}}</div>
+    <div class="col-6 col-md-4">total: ${{budget.get_total}}</div>
+    <div class="col-6 col-md-4">after tax: ${{budget.after_tax}}</div>
+    <div class="col-6 col-md-4">savings: ${{budget.savings}}</div>
+    <div class="col-6 col-md-4">if 10% was used to pay debts: ${{budget.debt}}</div>
+    <div class="col-6 col-md-4">expenses to income ratio<br> %{{budget.totalpercent}}</div>
+
+
+
+
+
+
+  </div>
+  <div class="col-12 col-md-8"><a href="{% url 'budget:budget_list'%}">Go back?</a></div>
+
+
+
+
+
+
+
+
+
+
+<br>
+
+
+    <!--
+
+    <div class="row">
+      <div class="col-6 col-md-4">Date: {{jobs.date}}</div>
+      <div class="col-6 col-md-4">Expenses: {{jobs.expenses.all|join:"<br>"}}</div>
+      <div class="col-6 col-md-4">total expenses for job: {{jobs.get_total}}</div>
+      <div class="col-6 col-md-4">wages: {{jobs.get_wages}}</div>
+      <div class="col-6 col-md-4">Profit: {{jobs.get_profit}}</div>
+
+
+    </div>
+-->
+  
+
+    <hr>
+
+
+
+   
+  </div> <!-- /container -->
+
+</div>
+
+{% else %}
+<p> no budgets</p>
+
+{%endif%}
+
+
+
+
+{% endblock %}
+

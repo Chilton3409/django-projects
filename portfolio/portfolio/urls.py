@@ -24,10 +24,12 @@ urlpatterns = [
  
   
       path('users/', include('users.urls')),
-    path('store/', include('store.urls')),
+      path('bills/', include('bills.urls')),
+      path('budget/', include('budget.urls')),
+      path('store/', include('store.urls')),
+  
     path('', RedirectView.as_view(url='store/', permanent=True)),
-    path('jobs/', include('jobs.urls')),
-    path('', RedirectView.as_view(url='jobs/', permanent=True)),
+ 
     path('accounts/', include('django.contrib.auth.urls')),
    
     

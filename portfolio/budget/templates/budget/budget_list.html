@@ -1,0 +1,55 @@
+{% extends "store/base_generic.html"%}
+
+{% block content %}
+{% if budget %}
+
+<div class="d-flex flex-row bd-highlight mb-3">
+    <div class="p-2 bd-highlight"><th><a href="{% url 'budget:budget_create' %}">Create new budget</a></th></div>
+    <div class="p-2 bd-highlight"><th>Income</th></div>
+    <div class="p-2 bd-highlight"><th>Expenses</th></div>
+    <div class="p-2 bd-highlight"></div>
+  
+  </div>
+  <div class="d-flex flex-row-reverse bd-highlight">
+
+    <div class="p-2 bd-highlight">overall total: ${{overall_total}}</div>
+    <div class="p-2 bd-highlight">Flex item 3</div>
+  </div>
+  
+
+  <table class="table text-center">
+      <thead class="text-center">
+        <tr class="text-center">
+          
+          <th class="text-center">Name</th>
+          <th class="text-center">Income</th>
+          <th class="text-center">Expenses</th>
+          <th class="text-center">total</th>
+
+        </tr>
+      </thead>
+      <tbody class="container text-center">
+{% for b in budget%}
+<td class="text-center">
+    <div class="col-12 col-md-8"><a href="{{b.get_absolute_url}}">{{b.name}}</a></div>
+</td>
+<td>
+    <div class="col-12 col-md-8">{{b.income}}</div>
+</td>
+<td>
+    <div class="col-12 col-md-8">{{b.expenses}}</div>
+</td>
+<td>
+    <div class="col-12 col-md-8">{{b.get_total}}</div>
+</td>
+</tr>
+{%endfor%}
+</tbody>
+</table>
+
+{% else %}
+<p>no budgets created</p>
+{% endif %}
+
+
+{% endblock%}

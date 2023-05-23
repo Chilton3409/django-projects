@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.conf import settings 
 from django.shortcuts import render
-from .models import Product, Store, Business
+from .models import Business
 from django.views import generic 
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -32,9 +32,9 @@ import os
 
 
 
-# Create your views here.
+# Create your views here.z
 def index(request):
-    num_products = Product.objects.all().count()
+    num_products = Business.objects.all().count()
 
     context = {
         'num_products': num_products,
@@ -42,60 +42,7 @@ def index(request):
 
     return render(request, 'store/index.html', context=context)
 
-class ProductListView(generic.ListView):
-    model = Product
-    context_object_name = 'product_list'
-    template_name ="store/product_list.html"
 
-class ProductDetailView(generic.DetailView):
-    model = Product
-    context_object_name = 'product'
-    template_name='store/product_detail.html'
-
-class ProductCreateView(CreateView):
-    model = Product
-    fields = ['name', 'price', 'inv', 'description']
-    template_name = 'store/product_create.html'
-    success_url = reverse_lazy('store:product_list')
-
-class ProductUpdateView(UpdateView):
-    model = Product
-    fields = ['name', 'price', 'inv', 'description']
-    template_name = 'store/product_create.html'
-    success_url = reverse_lazy('store:product_list')
-
-class ProductDeleteView(DeleteView):
-    model = Product 
-    fields = ['name', 'price', 'inv', 'description']
-    success_url = reverse_lazy('store:product_list')
-    
-class StoreListView(generic.ListView):
-    model = Store
-    context_object_name='store_list'
-    template_name='store/store_list.html'
-
-class StoreDetailView(generic.DetailView):
-    model = Store
-    context_object_name='store'
-    template_name='store/store_detail.html'
-
-class StoreCreateView(CreateView):
-    model = Store 
-    fields = ['headline', 'Items']
-    template_name = 'store/store_create.html'
-    success_url = reverse_lazy('store:store_list')
-
-
-class StoreUpdateView(UpdateView):
-    model = Store 
-    fields = ['headline', 'Items']
-    template_name = 'store/store_create.html'
-    success_url = reverse_lazy('store:store_list')
-    
-class StoreDeleteView(DeleteView):
-    model = Store
-    fields = ['headline', 'Items']
-    success_url = reverse_lazy('store:store_list')
 
 class BusinessListView(generic.ListView):
     model = Business
