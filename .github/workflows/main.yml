@@ -28,4 +28,4 @@ jobs:
           context: .
           file: portfolio/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/newtest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/newtest:latest
