@@ -4,7 +4,7 @@ FROM python:3
 
 WORKDIR /portfolio
 
-COPY portfolio/requirements.txt /requirements.txt
+COPY portfolio/requirements.txt portfolio/requirements.txt
 
 RUN pip3 install -r portfolio/requirements.txt
 
