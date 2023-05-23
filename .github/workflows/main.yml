@@ -28,4 +28,4 @@ jobs:
           context: .
           file: portfolio/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}<none>
