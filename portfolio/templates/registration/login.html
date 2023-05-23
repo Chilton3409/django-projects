@@ -4,9 +4,10 @@
 <link rel='stylesheet' href="{% static 'css/signin.css' %}">
 {% endblock %}
 {% block content %}
-
+<div class="container-fluid text-center">
+<p>hello world</p>
 {% if form.errors %}
-<p >Your username and password didn't match. Please try again.</p>
+<p>Your username and password didn't match. Please try again.</p>
 {% endif %}
 
 {% if next %}
@@ -19,7 +20,7 @@
 {% endif %}
 
 <body class="text-center" >
-  <form class="form-signin" method="post" action="{% url 'login' %}">
+  <form class="form-signin-responsive" method="post" action="{% url 'login' %}">
     {% csrf_token %}
 
     
@@ -49,6 +50,7 @@
   </script>
 
 </body>
+</div>
 <!--
     
 <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
